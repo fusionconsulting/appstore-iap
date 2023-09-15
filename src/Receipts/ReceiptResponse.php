@@ -120,6 +120,10 @@ class ReceiptResponse implements Arrayable
         $obj->pendingRenewalInfo = $body['pending_renewal_info'] ?? null;
         $obj->receipt = $body['receipt'] ?? null;
 
+        if( array_key_exists('original_transaction_id', $obj->latestReceiptInfo)) {
+            $obj->latestReceiptInfo = [$obj->latestReceiptInfo];
+        }
+
         return $obj;
     }
 
